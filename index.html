@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 추첨기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        #lottoNumbers {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>로또 번호 랜덤 추첨기</h1>
+    <div id="lottoNumbers">번호를 생성하려면 버튼을 클릭하세요</div>
+    <button onclick="generateLottoNumbers()">번호 생성</button>
+
+    <script>
+        function generateLottoNumbers() {
+            const numbers = [];
+            while (numbers.length < 6) {
+                const randomNum = Math.floor(Math.random() * 45) + 1;
+                if (!numbers.includes(randomNum)) {
+                    numbers.push(randomNum);
+                }
+            }
+            numbers.sort((a, b) => a - b); // 오름차순 정렬
+            document.getElementById('lottoNumbers').innerText = numbers.join(', ');
+        }
+    </script>
+</body>
+</html>
